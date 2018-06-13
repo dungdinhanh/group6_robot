@@ -1,0 +1,3 @@
+The red circles are dropoff points. 
+The blue square is the robot. 
+The black line are the path connecting the droppoffpoints.
