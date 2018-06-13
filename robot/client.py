@@ -51,6 +51,7 @@ class S(BaseHTTPRequestHandler):
                 str(self.path), str(self.headers), post_data.decode('utf-8'))
         # Parse JSON data
         requestObject = json.loads(post_data.decode('utf-8'))
+        server_socket.send(json.dumps(requestObject))
         self._set_response()
         self.wfile.write("POST request for {}".format(self.path).encode('utf-8'))
 
