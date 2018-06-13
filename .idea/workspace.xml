@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="95564e15-aa0e-4c2f-8ecf-bf671d9290fb" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/robot/robot.py" beforeDir="false" afterPath="$PROJECT_DIR$/robot/robot.py" afterDir="false" />
-    </list>
+    <list default="true" id="95564e15-aa0e-4c2f-8ecf-bf671d9290fb" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,7 +11,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/group6$server.coverage" NAME="server Coverage Results" MODIFIED="1528880887021" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/robot" />
-    <SUITE FILE_PATH="coverage/group6$client.coverage" NAME="client Coverage Results" MODIFIED="1528883557701" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/robot" />
+    <SUITE FILE_PATH="coverage/group6$client.coverage" NAME="client Coverage Results" MODIFIED="1528884714806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/robot" />
   </component>
   <component name="FileEditorManager">
     <leaf>
@@ -32,8 +30,8 @@
       <file leaf-file-name="robot.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/robot/robot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="210" selection-start-line="210" selection-end-line="213" selection-end-column="30" />
+            <state relative-caret-position="958">
+              <caret line="155" column="18" selection-start-line="155" selection-start-column="18" selection-end-line="155" selection-end-column="18" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -269,8 +267,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/robot/robot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="210" selection-start-line="210" selection-end-line="213" selection-end-column="30" />
+        <state relative-caret-position="958">
+          <caret line="155" column="18" selection-start-line="155" selection-start-column="18" selection-end-line="155" selection-end-column="18" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
           </folding>
