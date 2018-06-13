@@ -12,6 +12,8 @@ const wss = new WebSocket.Server({
   port: 8888
 });
 
+let isWaiting = false;
+
 const sendMessage = (client, type, data) => {
   const message = { type, data };
   const jsonMessage = JSON.stringify(message);
@@ -66,7 +68,10 @@ app.get('*', (req, res) => {
 
 app.post("/commands", (req, res) => {
   console.log('Get to post /commands')
-  if (_destinationPoint === null) {
+  if (isWaiting) {
+    res.send('Waiting for robot response')
+  }
+  else if (_destinationPoint === null) {
     console.log("Req", req.body);
     const { destinationPoint } = req.body;
     _commands = paths.paths[_currentPoint][destinationPoint];
@@ -79,6 +84,15 @@ app.post("/commands", (req, res) => {
     // }, 2000);
   }
 });
+
+app.post("/response", (req, res) => {
+  const robotData = JSON.stringify(req.body)
+  _humidity = 1;
+  _temperature = 1;
+  _currentPoint = robotData.currentPoint;
+  _destinationPoint = null;
+  sendDataToClient();
+})
 
 app.listen(4000, () => {
   console.log("Control server up");
