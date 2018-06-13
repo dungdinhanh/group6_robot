@@ -7,7 +7,7 @@ from socket import *
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import socketserver
 
-mac_address = "D4:36:39:D1:E3.1F"
+mac_address = "00:17:E9:F8:72:06"
 port_ev3 = 1
 max_data = 2048
 
@@ -15,30 +15,30 @@ max_data = 2048
 
 from socket import *
 
-
-class S(BaseHTTPRequestHandler):
-    def _set_headers(self):
-        self.send_response(200)
-        self.send_header('Content-type', 'text/html')
-        self.end_headers()
-
-    def do_GET(self):
-        self._set_headers()
-        self.wfile.write("<html><body><h1>hi!</h1></body></html>")
-
-    def do_HEAD(self):
-        self._set_headers()
-
-    def do_POST(self):
-        # Doesn't do anything with posted data
-        self._set_headers()
-        self.wfile.write("<html><body><h1>POST!</h1></body></html>")
-
-def run(server_class=HTTPServer, handler_class=S, port=9000):
-    server_address = ('', port)
-    httpd = server_class(server_address, handler_class)
-    print ('Starting httpd...')
-    httpd.serve_forever()
+#
+# class S(BaseHTTPRequestHandler):
+#     def _set_headers(self):
+#         self.send_response(200)
+#         self.send_header('Content-type', 'text/html')
+#         self.end_headers()
+#
+#     def do_GET(self):
+#         self._set_headers()
+#         self.wfile.write("<html><body><h1>hi!</h1></body></html>")
+#
+#     def do_HEAD(self):
+#         self._set_headers()
+#
+#     def do_POST(self):
+#         # Doesn't do anything with posted data
+#         self._set_headers()
+#         self.wfile.write("<html><body><h1>POST!</h1></body></html>")
+#
+# def run(server_class=HTTPServer, handler_class=S, port=9000):
+#     server_address = ('', port)
+#     httpd = server_class(server_address, handler_class)
+#     print ('Starting httpd...')
+#     httpd.serve_forever()
 
 # def createServer():
 #     serversocket = socket(AF_INET, SOCK_STREAM)
@@ -59,10 +59,10 @@ def run(server_class=HTTPServer, handler_class=S, port=9000):
 #
 # createServer()
 
-def connect_to_ev3(mac_address, port_ev3):
+
+def connect_to_ev3(in_mac_address, in_port_ev3):
     server_socket = BluetoothSocket(RFCOMM)
-    server_socket.connect((mac_address, port_ev3))
-    #server_socket.recv(1024)
+    server_socket.connect((in_mac_address, in_port_ev3))
     return server_socket
 
 
@@ -89,7 +89,7 @@ class EvConnect:
         self.send_message = ""
 
     def set_up_connection(self):
-        self.server_socket = connect_to_ev3(mac_address, port_ev3)
+        self.server_socket = connect_to_ev3(self.mac_address, self.port_ev3)
 
     def get_data(self):
         if self.server_socket is None:
@@ -135,7 +135,8 @@ ev3_connect.set_up_connection()
 ev3_listener = EvListenThread(name="listener")
 ev3_listener.start()
 
-fake_mess = take_fake_input()
+fake_mess = {}
+fake_mess['list_action'] = [1]
 ev3_connect.send_data(json.dumps(fake_mess))
 
 
