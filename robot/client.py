@@ -16,19 +16,20 @@ server_socket.connect(("00:17:E9:F8:72:06", 1))
 
 data = {}
 
-data['list_action'] = [1, 3, 1, 4, 5]
-
-json_data = json.dumps(data)
-
-print(json_data)
-
-server_socket.send(json_data)
-
-print("Finished")
-
-time.sleep(2)
-
-server_socket.close()
+# while True:
+#     data['list_action'] = [1, 3, 1, 4, 5]
+#
+#     json_data = json.dumps(data)
+#
+#     print(json_data)
+#
+#     server_socket.send(json_data)
+#
+#     print("Finished")
+#
+#     time.sleep(2)
+#
+# server_socket.close()
 
 # Webserver
 class S(BaseHTTPRequestHandler):
@@ -55,6 +56,7 @@ class S(BaseHTTPRequestHandler):
         self._set_response()
         self.wfile.write("POST request for {}".format(self.path).encode('utf-8'))
 
+
 def run(server_class=HTTPServer, handler_class=S, port=8080):
     logging.basicConfig(level=logging.INFO)
     server_address = ('', port)
@@ -67,6 +69,7 @@ def run(server_class=HTTPServer, handler_class=S, port=8080):
     httpd.server_close()
     logging.info('Stopping robot server...\n')
 
+
 if __name__ == '__main__':
     from sys import argv
 
@@ -74,3 +77,18 @@ if __name__ == '__main__':
         run(port=int(argv[1]))
     else:
         run()
+
+    # while True:
+    #     data['list_action'] = [1, 3, 1, 4, 5]
+    #
+    #     json_data = json.dumps(data)
+    #
+    #     print(json_data)
+    #
+    #     server_socket.send(json_data)
+    #
+    #     print("Finished")
+    #
+    #     time.sleep(2)
+
+    # server_socket.close()

@@ -253,6 +253,8 @@ while True:
 
             elif command == 6:
                 forkup()
+            else:
+                break
         web_client_message = None
 
 time.sleep(1)
