@@ -78,7 +78,7 @@ def forth():
             time.sleep(1)
             stop()
             run = False
-            send_data_to_server()
+            #send_data_to_server()
 
         # blue:stop
         elif color_value == 2:
