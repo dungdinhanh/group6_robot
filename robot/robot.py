@@ -208,10 +208,10 @@ def send_data_to_server():
     else:
         data['humidity'] = 'bad'
 
-    if ts.value() == 1:
-        data['cargo'] = 'yes'
-    else:
-        data['cargo'] = 'no'
+    # if ts.value() == 1:
+    #     data['cargo'] = 'yes'
+    # else:
+    #     data['cargo'] = 'no'
 
     json_data = json.dumps(data)
 
