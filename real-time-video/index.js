@@ -39,6 +39,7 @@ let _destinationPoint = null;
 let _commands = [];
 
 app.use(cors());
+app.use(bodyParser.text());
 app.use(bodyParser.json());
 
 const mockRobotResponse = () => {
@@ -49,7 +50,6 @@ const mockRobotResponse = () => {
   _destinationPoint = null;
 };
 const sendDataToClient = () => {
-
   broadcast(
     "robot",
     JSON.stringify({
@@ -78,15 +78,12 @@ app.post("/commands", (req, res) => {
     res.send(JSON.stringify(_commands));
     _destinationPoint = destinationPoint;
     sendDataToClient();
-    // setTimeout(() => {
-    //   mockRobotResponse();
-    //   sendDataToClient();
-    // }, 2000);
   }
 });
 
 app.post("/response", (req, res) => {
-  const robotData = JSON.stringify(req.body)
+  console.log(req.body)
+  const robotData = JSON.parse(req.body)
   _humidity = 1;
   _temperature = 1;
   _currentPoint = robotData.currentPoint;
