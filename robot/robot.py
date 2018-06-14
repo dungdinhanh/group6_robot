@@ -111,8 +111,8 @@ def back():
 
 
 def go_head():
-    mLeft.run_timed(time_sp=20, speed_sp=50)
-    mRight.run_timed(time_sp=20, speed_sp=50)
+    mLeft.run_timed(time_sp=2000, speed_sp=50)
+    mRight.run_timed(time_sp=2000, speed_sp=50)
 
 
 def left(): #test
