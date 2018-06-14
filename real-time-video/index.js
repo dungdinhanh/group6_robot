@@ -89,6 +89,7 @@ app.post("/response", (req, res) => {
   _currentPoint = robotData.currentPoint;
   _destinationPoint = null;
   sendDataToClient();
+  res.send('Received position')
 })
 
 app.listen(4000, () => {
