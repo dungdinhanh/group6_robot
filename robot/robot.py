@@ -73,8 +73,8 @@ def forth():
         if color_value == 1:
             mLeft.run_forever(speed_sp=50)
             mRight.run_forever(speed_sp=50)
-        # yellow:stop
-        elif color_value == 4:
+        # green:stop
+        elif color_value == 3:
             time.sleep(1)
             stop()
             run = False
@@ -119,6 +119,7 @@ def right():
     while gs.value() < 90:
         print(gs.value())
         pass
+    stop() #just add in
 
 
 def left():
@@ -130,6 +131,7 @@ def left():
     while gs.value() > -90:
         print(gs.value())
         pass
+    stop() #just add in
 
 
 def forkup():
