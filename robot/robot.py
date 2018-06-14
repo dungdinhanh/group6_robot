@@ -80,8 +80,8 @@ def forth():
             run = False
             send_data_to_server()
 
-        # blue:stop
-        elif color_value == 2:
+        # red:stop
+        elif color_value == 5:
             time.sleep(1)
             stop()
             run = False
@@ -110,7 +110,7 @@ def back():
     mRight.run_forever(time_sp=20, speed_sp=-50)
 
 
-def right():
+def left(): #test
     print("turning right")
     gs.mode = 'GYRO-RATE'
     gs.mode = 'GYRO-ANG'
@@ -122,7 +122,7 @@ def right():
     stop() #just add in
 
 
-def left():
+def right(): #test
     print("turning left")
     gs.mode = 'GYRO-RATE'
     gs.mode = 'GYRO-ANG'
@@ -132,6 +132,30 @@ def left():
         print(gs.value())
         pass
     stop() #just add in
+
+
+# def right():
+#     print("turning right")
+#     gs.mode = 'GYRO-RATE'
+#     gs.mode = 'GYRO-ANG'
+#     mLeft.run_forever(speed_sp=-50)
+#     mRight.run_forever(speed_sp=50)
+#     while gs.value() < 90:
+#         print(gs.value())
+#         pass
+#     stop() #just add in
+#
+#
+# def left():
+#     print("turning left")
+#     gs.mode = 'GYRO-RATE'
+#     gs.mode = 'GYRO-ANG'
+#     mLeft.run_forever(speed_sp=50)
+#     mRight.run_forever(speed_sp=-50)
+#     while gs.value() > -90:
+#         print(gs.value())
+#         pass
+#     stop() #just add in
 
 
 def forkup():
