@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+    <div id="container">
+        <p id="waiting-on-robot"></p> 
+        <div id="map-container">
+            <canvas id="canvas-map" width="600" height="600"></canvas>
+            <div id="map-info">
+                <p id="map-info-element">
+                    <b>Last commands sent to server: </b>
+                    <div id="commands"> </div> 
+                </p>
+                <p id="map-info-element">
+                    <b>Current dropoff point: </b>
+                    <div id="current-dp"> </div>
+                </p>
+                <p id="map-info-element">
+                    <b>Destination dropoff point:</b>
+                    <div id="destination-dp"> </div>
+                </p>
+                <p id="map-info-element">
+                    <b>Humidity: </b>
+                    <div id="humidity"> </div>
+                </p>
+                <p id="map-info-element">
+                    <b>Temperature: </b>
+                    <div id="temperature"></div>
+                </p>
+            </div>
+        </div>
+        <canvas id="canvas-video" width="1280" height="720"></canvas>
+    </div>
+    <script src="./app.js"></script>
+</body>
+
+</html>

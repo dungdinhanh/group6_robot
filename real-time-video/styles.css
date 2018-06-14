@@ -1,0 +1,33 @@
+#canvas-map {
+    height: 600;
+    width: 600;
+    background-color: white;
+    border: 1px solid gray;
+    margin: 0px auto;
+}
+
+#canvas-video {
+    width: 1280;
+    height: 720; 
+}
+
+#id {
+    display: flex;
+    flex-direction: column;
+}
+
+#map-container {
+    display: flex;
+    flex-direction: row;
+    height: 700;
+    width: 1200;
+}
+
+#map-info-element {
+    display: flex;
+}
+
+#map-info {
+    display: flex;
+    flex-direction: column;
+}
