@@ -10,8 +10,8 @@ mLeft = LargeMotor('outB')
 mRight = LargeMotor('outC')
 fork = MediumMotor('outA')
 
-us = UltrasonicSensor()
-us.mode = 'US-DIST-CM'
+# us = UltrasonicSensor()
+# us.mode = 'US-DIST-CM'
 cs = ColorSensor()
 cs.mode = "COL-COLOR"
 gs = GyroSensor()
