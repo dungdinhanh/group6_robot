@@ -1,7 +1,8 @@
-from bluetooth import *
+# from bluetooth import *
 import json
 import time
 import threading
+import requests
 
 # Dependencies for web server
 import socket
@@ -47,12 +48,18 @@ class S(BaseHTTPRequestHandler):
         # Get data
         post_data = self.rfile.read(content_length)
         logging.info("POST request,\nPath: %s\nHeaders:\n%s\n\nBody:\n%s\n",
-                str(self.path), str(self.headers), post_data.decode('utf-8'))
-        # Parse JSON data
-        requestObject = json.loads(post_data.decode('utf-8'))
-        server_socket.send(json.dumps(requestObject))
-        self._set_response()
-        self.wfile.write("POST request for {}".format(self.path).encode('utf-8'))
+            str(self.path), str(self.headers), post_data.decode('utf-8'))
+        if self.path == '/response':
+            print('/response')
+            requests.post("http://localhost:4000/response", data=post_data.decode('utf-8'))
+        else:
+            print('/*')
+            # Parse JSON data
+            requestObject = json.loads(post_data.decode('utf-8'))
+            server_socket.send(json.dumps(requestObject))
+
+            self._set_response()
+            self.wfile.write("POST request for {}".format(self.path).encode('utf-8'))
 
 def run(server_class=HTTPServer, handler_class=S, port=8080):
     logging.basicConfig(level=logging.INFO)
