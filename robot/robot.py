@@ -110,10 +110,16 @@ def back():
     mRight.run_forever(time_sp=20, speed_sp=-50)
 
 
+def go_head():
+    mLeft.run_timed(time_sp=20, speed_sp=50)
+    mRight.run_timed(time_sp=20, speed_sp=50)
+
+
 def left(): #test
     print("turning left")
     gs.mode = 'GYRO-RATE'
     gs.mode = 'GYRO-ANG'
+    go_head()
     mLeft.run_forever(speed_sp=-50)
     mRight.run_forever(speed_sp=50)
     while gs.value() > -90:
@@ -126,6 +132,7 @@ def right(): #test
     print("turning right")
     gs.mode = 'GYRO-RATE'
     gs.mode = 'GYRO-ANG'
+    go_head()
     mLeft.run_forever(speed_sp=50)
     mRight.run_forever(speed_sp=-50)
     while gs.value() < 90:

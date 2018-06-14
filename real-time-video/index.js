@@ -50,7 +50,6 @@ const mockRobotResponse = () => {
   _destinationPoint = null;
 };
 const sendDataToClient = () => {
-
   broadcast(
     "robot",
     JSON.stringify({
@@ -73,7 +72,6 @@ app.post("/commands", (req, res) => {
     res.send('Waiting for robot response')
   }
   else if (_destinationPoint === null) {
-
     console.log("Req", req.body);
     const { destinationPoint } = req.body;
     _commands = paths.paths[_currentPoint][destinationPoint];
@@ -93,7 +91,6 @@ app.post("/response", (req, res) => {
   sendDataToClient();
   res.send('Received position')
 })
-
 
 app.listen(4000, () => {
   console.log("Control server up");

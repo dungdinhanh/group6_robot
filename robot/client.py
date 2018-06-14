@@ -10,13 +10,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import logging
 
 # Example of how to create the client socket and send json to the robot.
-server_socket = BluetoothSocket(RFCOMM)
 
-
-server_socket.connect(("00:17:E9:F8:72:06", 1))
-
-
-data = {}
 
 # while True:
 #     data['list_action'] = [1, 3, 1, 4, 5]
@@ -32,6 +26,16 @@ data = {}
 #     time.sleep(2)
 #
 # server_socket.close()
+
+
+server_socket = BluetoothSocket(RFCOMM)
+
+
+server_socket.connect(("00:17:E9:F8:72:06", 1))
+
+
+
+
 
 # Webserver
 class S(BaseHTTPRequestHandler):
@@ -51,21 +55,23 @@ class S(BaseHTTPRequestHandler):
         # Get data
         post_data = self.rfile.read(content_length)
         logging.info("POST request,\nPath: %s\nHeaders:\n%s\n\nBody:\n%s\n",
-            str(self.path), str(self.headers), post_data.decode('utf-8'))
-        if self.path == '/response':
-            print('/response')
-            requests.post("http://localhost:4000/response", data=post_data.decode('utf-8'))
-        else:
-            print('/*')
-            # Parse JSON data
-            requestObject = json.loads(post_data.decode('utf-8'))
-            server_socket.send(json.dumps(requestObject))
+                     str(self.path), str(self.headers), post_data.decode('utf-8'))
 
-            self._set_response()
-            self.wfile.write("POST request for {}".format(self.path).encode('utf-8'))
+        # Parse JSON data
+
+        requestObject = json.loads(post_data.decode('utf-8'))
+
+        server_socket.send(json.dumps(requestObject))
+        # file_out = open("sr.txt", "w")
+        # file_out.write(json.dumps(requestObject))
+        # file_out.close()
+
+        self._set_response()
+
+        self.wfile.write("POST request for {}".format(self.path).encode('utf-8'))
 
 
-def run(server_class=HTTPServer, handler_class=S, port=8080):
+def run_http(server_class=HTTPServer, handler_class=S, port=8080):
     logging.basicConfig(level=logging.INFO)
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
@@ -78,13 +84,11 @@ def run(server_class=HTTPServer, handler_class=S, port=8080):
     logging.info('Stopping robot server...\n')
 
 
-if __name__ == '__main__':
-    from sys import argv
 
-    if len(argv) == 2:
-        run(port=int(argv[1]))
-    else:
-        run()
+
+if __name__ == '__main__':
+    run_http()
+
 
     # while True:
     #     data['list_action'] = [1, 3, 1, 4, 5]
