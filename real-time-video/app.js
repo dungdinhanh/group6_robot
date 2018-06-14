@@ -13,8 +13,6 @@ var temperatureDisplay = document.getElementById('temperature');
 var commandsDisplay = document.getElementById('commands');
 var waitingOnRobot = document.getElementById('waiting-on-robot');
 
-//var serverHtml = 'http//localhost:4000';
-
 var dropoffPoints = [
   {
     id: 0,
@@ -202,18 +200,7 @@ map.addEventListener('click', function (evt) {
       .then(response => response.json())
       .then(json => {
         console.log(json)
-        fetch('http://localhost:8080', {
-          body: JSON.stringify({
-            list_action: json,
-            default: 'on'
-          }),
-          // headers: {
-          //   'content-type': 'application/json'
-          // },
-          method: 'POST'
-        })
-          .then(response => response.json())
-          .then(json => console.log('Data from robot server after send list_actions', json))
+
       })
   }
 }, false);
