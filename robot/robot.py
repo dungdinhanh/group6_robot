@@ -111,24 +111,24 @@ def back():
 
 
 def left(): #test
-    print("turning right")
+    print("turning left")
     gs.mode = 'GYRO-RATE'
     gs.mode = 'GYRO-ANG'
     mLeft.run_forever(speed_sp=-50)
     mRight.run_forever(speed_sp=50)
-    while gs.value() < 90:
+    while gs.value() > -90:
         print(gs.value())
         pass
     stop() #just add in
 
 
 def right(): #test
-    print("turning left")
+    print("turning right")
     gs.mode = 'GYRO-RATE'
     gs.mode = 'GYRO-ANG'
     mLeft.run_forever(speed_sp=50)
     mRight.run_forever(speed_sp=-50)
-    while gs.value() > -90:
+    while gs.value() < 90:
         print(gs.value())
         pass
     stop() #just add in
