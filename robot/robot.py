@@ -6,9 +6,9 @@ import time
 import random
 from ev3dev.ev3 import *
 
-mLeft = LargeMotor('outA')
-mRight = LargeMotor('outB')
-fork = MediumMotor('outD')
+mLeft = LargeMotor('outB')
+mRight = LargeMotor('outC')
+fork = MediumMotor('outA')
 
 us = UltrasonicSensor()
 us.mode = 'US-DIST-CM'
@@ -117,6 +117,7 @@ def right():
     mLeft.run_forever(speed_sp=-50)
     mRight.run_forever(speed_sp=50)
     while gs.value() < 90:
+        print(gs.value())
         pass
 
 
@@ -127,6 +128,7 @@ def left():
     mLeft.run_forever(speed_sp=50)
     mRight.run_forever(speed_sp=-50)
     while gs.value() > -90:
+        print(gs.value())
         pass
 
 
