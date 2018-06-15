@@ -168,38 +168,40 @@ def right(): #test
 def forkup():
     run = True
     while run:
+        print("lifting cargo")
+        stop()
+        fork.run_timed(time_sp=100, speed_sp=150)
+        run = False
+        send_data_to_server()
         # black: go straight forward
-        color_value = cs.value()
-        if color_value == 1:
-            mLeft.run_forever(speed_sp=50)
-            mRight.run_forever(speed_sp=50)
-        # pick up cargo
-        elif ts.value() == 1:
-            print("lifting cargo")
-            stop()
-            fork.run_timed(time_sp=100, speed_sp=150)
-            run = False
-            send_data_to_server()
-
-        # other colors: adjust the direction and find the black line
-        else:
-            for i in range(1, 400):
-                mLeft.run_timed(time_sp=20, speed_sp=150)
-                mRight.run_timed(time_sp=20, speed_sp=-150)
-                if cs.value() == 1:
-                    break
-            for j in range(1, 150):
-                mRight.run_timed(time_sp=20, speed_sp=100)
-                mLeft.run_timed(time_sp=20, speed_sp=-100)
-                if cs.value() == 1:
-                    break
+        # color_value = cs.value()
+        # if color_value == 1:
+        #     mLeft.run_forever(speed_sp=50)
+        #     mRight.run_forever(speed_sp=50)
+        # # pick up cargo
+        # elif ts.value() == 1:
+        #
+        #
+        # # other colors: adjust the direction and find the black line
+        # else:
+        #     for i in range(1, 400):
+        #         mLeft.run_timed(time_sp=20, speed_sp=150)
+        #         mRight.run_timed(time_sp=20, speed_sp=-150)
+        #         if cs.value() == 1:
+        #             break
+        #     for j in range(1, 150):
+        #         mRight.run_timed(time_sp=20, speed_sp=100)
+        #         mLeft.run_timed(time_sp=20, speed_sp=-100)
+        #         if cs.value() == 1:
+        #             break
 
 
 def forkdown():
     run = True
     while run:
         # black: go straight forward
-        color_value = cs.value()
+        # color_value = cs.value()
+        color_value = 5
         if color_value == 1:
             mLeft.run_forever(speed_sp=50)
             mRight.run_forever(speed_sp=50)
