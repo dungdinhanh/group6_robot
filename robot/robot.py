@@ -124,7 +124,7 @@ def left(): #test
     go_head()
     mLeft.run_forever(speed_sp=-50)
     mRight.run_forever(speed_sp=50)
-    while gs.value() > -90:
+    while gs.value() > -85:
         print(gs.value())
         pass
     stop() #just add in
