@@ -169,8 +169,9 @@ def forkup():
     run = True
     while run:
         print("lifting cargo")
+        fork.run_forever(speed_sp=150)
+        time.sleep(1)
         stop()
-        fork.run_timed(time_sp=100, speed_sp=150)
         run = False
         send_data_to_server()
         # black: go straight forward
@@ -208,8 +209,9 @@ def forkdown():
         # red:put cargo down
         elif color_value == 5:
             print("putting cargo down")
+            fork.run_forever(speed_sp=-150)
+            time.sleep(1)
             stop()
-            fork.run_timed(time_sp=100, speed_sp=-150)
             run = False
             send_data_to_server()
         # other colors: adjust the direction and find the black line
