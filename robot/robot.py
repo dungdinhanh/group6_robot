@@ -106,6 +106,19 @@ def forth():
 # web_client.message_to_send = ar_signal.get_json()
 
 def back():
+    print('backward')
+    mLeft.polarity = 'inversed'
+    mLeft.run_forever(speed_sp=50)
+    mRight.run_forever(speed_sp=50)
+    gs.mode = 'GYRO-RATE'
+    gs.mode = 'GYRO-ANG'
+    while gs.value() < 180:
+        print(gs.value())
+        pass
+    stop()
+    forth()
+
+def back_old():
     print("backward")
     run = True
     mLeft.run_forever(speed_sp=-50)
@@ -115,8 +128,8 @@ def back():
         color_value = cs.value()
         # black: go straight forward
         if color_value == 1:
-            mLeft.run_forever(speed_sp=-50)
-            mRight.run_forever(speed_sp=-40)
+            mLeft.run_forever(speed_sp=-40)
+            mRight.run_forever(speed_sp=-50)
         # green:stop
         elif color_value == 3:
             time.sleep(1)
@@ -125,15 +138,15 @@ def back():
             send_data_to_server()
 
         # red:stop
-        elif color_value == 5:
-            time.sleep(1)
-            stop()
-            run = False
+        # elif color_value == 5:
+        #     time.sleep(1)
+        #     stop()
+        #     run = False
         # other colors: adjust the direction and find the black line
 
         else:
-            mLeft.run_forever(speed_sp=-40)
-            mRight.run_forever(speed_sp=-50)
+            mLeft.run_forever(speed_sp=-50)
+            mRight.run_forever(speed_sp=-40)
             # for i in range(1, 400):
             #     mLeft.run_timed(time_sp=20, speed_sp=150)
             #     mRight.run_timed(time_sp=20, speed_sp=-150)
