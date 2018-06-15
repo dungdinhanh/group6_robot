@@ -115,8 +115,8 @@ def back():
         color_value = cs.value()
         # black: go straight forward
         if color_value == 1:
-            mLeft.run_forever(speed_sp=50)
-            mRight.run_forever(speed_sp=40)
+            mLeft.run_forever(speed_sp=-50)
+            mRight.run_forever(speed_sp=-40)
         # green:stop
         elif color_value == 3:
             time.sleep(1)
@@ -132,8 +132,8 @@ def back():
         # other colors: adjust the direction and find the black line
 
         else:
-            mLeft.run_forever(speed_sp=40)
-            mRight.run_forever(speed_sp=50)
+            mLeft.run_forever(speed_sp=-40)
+            mRight.run_forever(speed_sp=-50)
             # for i in range(1, 400):
             #     mLeft.run_timed(time_sp=20, speed_sp=150)
             #     mRight.run_timed(time_sp=20, speed_sp=-150)
@@ -214,9 +214,9 @@ def forkup():
     run = True
     while run:
         print("lifting cargo")
-        fork.run_forever(speed_sp=150)
-        time.sleep(1)
-        stop()
+        fork.run_to_rel_pos(position_sp=45,speed_sp=100)
+        time.sleep(3)
+        # stop()
         run = False
         send_data_to_server()
         # black: go straight forward
@@ -241,8 +241,17 @@ def forkup():
         #         if cs.value() == 1:
         #             break
 
-
 def forkdown():
+    run = True
+    while run:
+        print("Putting cargo down")
+        fork.run_to_rel_pos(position_sp=-45,speed_sp=100)
+        time.sleep(3)
+        # stop()
+        run = False
+        send_data_to_server()
+
+def forkdown_old():
     run = True
     while run:
         # black: go straight forward
