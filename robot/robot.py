@@ -72,7 +72,7 @@ def forth():
         # black: go straight forward
         if color_value == 1:
             mLeft.run_forever(speed_sp=50)
-            mRight.run_forever(speed_sp=50)
+            mRight.run_forever(speed_sp=40)
         # green:stop
         elif color_value == 3:
             time.sleep(1)
@@ -88,16 +88,18 @@ def forth():
         # other colors: adjust the direction and find the black line
 
         else:
-            for i in range(1, 400):
-                mLeft.run_timed(time_sp=20, speed_sp=150)
-                mRight.run_timed(time_sp=20, speed_sp=-150)
-                if cs.value() == 1:
-                    break
-            for j in range(1, 150):
-                mRight.run_timed(time_sp=20, speed_sp=100)
-                mLeft.run_timed(time_sp=20, speed_sp=-100)
-                if cs.value() == 1:
-                    break
+            mLeft.run_forever(speed_sp=40)
+            mRight.run_forever(speed_sp=50)
+            # for i in range(1, 400):
+            #     mLeft.run_timed(time_sp=20, speed_sp=150)
+            #     mRight.run_timed(time_sp=20, speed_sp=-150)
+            #     if cs.value() == 1:
+            #         break
+            # for j in range(1, 150):
+            #     mRight.run_timed(time_sp=20, speed_sp=100)
+            #     mLeft.run_timed(time_sp=20, speed_sp=-100)
+            #     if cs.value() == 1:
+            #         break
 
         time.sleep(0.1)
 

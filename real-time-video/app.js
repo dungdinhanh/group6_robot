@@ -199,8 +199,8 @@ map.addEventListener('click', function (evt) {
     })
       .then(response => response.json())
       .then(json => {
-        json.unshift(6);
-        json.push(5);
+        // json.unshift(6);
+        // json.push(5);
         console.log(json)
         fetch('http://localhost:8080', {
           body: JSON.stringify({
