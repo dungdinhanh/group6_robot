@@ -38,6 +38,7 @@ exports.paths = {
     2: {
       0: [B, L, F, F, R, F],
       1: [B, L, F, R, F],
+        // 1: [B, F, R, F, R, F],
       3: [B, L, F, F, F],
       4: [B, R, F],
       5: [B, L, F, F, R],

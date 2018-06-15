@@ -105,11 +105,54 @@ def forth():
 
 # web_client.message_to_send = ar_signal.get_json()
 
-
 def back():
-    print("backwards")
-    mLeft.run_forever(time_sp=20, speed_sp=-50)
-    mRight.run_forever(time_sp=20, speed_sp=-50)
+    print("backward")
+    run = True
+    mLeft.run_forever(speed_sp=-50)
+    mRight.run_forever(speed_sp=-50)
+    time.sleep(1)
+    while run:
+        color_value = cs.value()
+        # black: go straight forward
+        if color_value == 1:
+            mLeft.run_forever(speed_sp=50)
+            mRight.run_forever(speed_sp=40)
+        # green:stop
+        elif color_value == 3:
+            time.sleep(1)
+            stop()
+            run = False
+            send_data_to_server()
+
+        # red:stop
+        elif color_value == 5:
+            time.sleep(1)
+            stop()
+            run = False
+        # other colors: adjust the direction and find the black line
+
+        else:
+            mLeft.run_forever(speed_sp=40)
+            mRight.run_forever(speed_sp=50)
+            # for i in range(1, 400):
+            #     mLeft.run_timed(time_sp=20, speed_sp=150)
+            #     mRight.run_timed(time_sp=20, speed_sp=-150)
+            #     if cs.value() == 1:
+            #         break
+            # for j in range(1, 150):
+            #     mRight.run_timed(time_sp=20, speed_sp=100)
+            #     mLeft.run_timed(time_sp=20, speed_sp=-100)
+            #     if cs.value() == 1:
+            #         break
+
+        time.sleep(0.1)
+
+# web_client.message_to_send = ar_signal.get_json()
+
+# def back():
+#     print("backwards")
+#     mLeft.run_forever(time_sp=20, speed_sp=-50)
+#     mRight.run_forever(time_sp=20, speed_sp=-50)
 
 
 def go_head():
