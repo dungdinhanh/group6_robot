@@ -68,17 +68,22 @@ app.get('*', (req, res) => {
 
 app.post("/commands", (req, res) => {
   console.log('Get to post /commands')
-  if (isWaiting) {
+  if (false) {
     res.send('Waiting for robot response')
   }
-  else if (_destinationPoint === null) {
+  else {
     console.log("Req", req.body);
     const { destinationPoint } = req.body;
     _commands = paths.paths[_currentPoint][destinationPoint];
     res.send(JSON.stringify(_commands));
     _destinationPoint = destinationPoint;
     sendDataToClient();
-  }
+    setTimeout(() => {
+      _currentPoint = _destinationPoint;
+      _destinationPoint = null;
+    }, 4000);
+    sendDataToClient();
+ }
 });
 
 app.post("/response", (req, res) => {
